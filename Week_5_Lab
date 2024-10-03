@@ -1,0 +1,203 @@
+# Week 5 Programming Exercise ##
+
+# 1. the Kilometer Converter Problem
+# This program asks the user a distance in kilometers and then uses a functiono to convert that distance to miles.
+
+Conversion_factor=0.6214
+#This function ask the user how many kilometers they want converted
+def main():
+    Kilometers=float(input("Enter a distance in Kilometers: "))
+    show_miles(Kilometers)
+
+def show_miles(km):
+    Miles=km*Conversion_factor
+    print(f"{km} kilometers equals {Miles} miles")
+main()
+
+# 2. Sales Tax Program Refactoring
+#  The program calculates and displays the county and state sales tax on a purchase
+
+def main ():
+    PI=float(input("How much is the item you would like to purchase? "))
+    tax(PI)
+
+def tax (PI):
+    State_Tax=PI*.05
+    County_Tax=PI*0.025
+    TS=PI+State_Tax+County_Tax
+    print(f"The amount of the Purchase is ${PI}\n"
+        f"The amount of State Tax is ${State_Tax}\n"
+        f"The amount of County Tax is ${County_Tax}\n"
+        f"The total sale is ${TS}")
+main()
+
+# 3. How Much Insurance?
+# The program asks the user to enter the replacement cost of a building, then displays the minimum amount of insurance he or she should buy for the property
+
+Insurance_rate=0.8
+def main ():
+    Cost_of_building=float(input("Please enter the replacement cost of the building. "))
+    insurance(Cost_of_building)
+
+def insurance(COB):
+    minumum_insurance=COB*Insurance_rate
+    print(f"The minimum amount of insurance you need for your building is ${minumum_insurance}")
+main()
+
+# 4. Automobile Costs
+# This program asks the user to enter the monthly cost for following expenses incurred from operating their automobile: Loan, insurance, gas, oil, tires and maintenance.
+
+def main():
+    loan=float(input("What is the loan payment per month? "))
+    insurance=float(input("What is the insurance payment per month? "))
+    gas=float(input("How much gas do you buy per month? "))
+    tire=float(input("How much do you spend on tires per month? "))
+    maintanence=float(input("How much do you spend on maintanence per month? "))
+    count(loan,insurance,gas,tire,maintanence)
+
+def count(loan,insurance,gas,tire,maintanence):
+    monthly_cost=loan+insurance+gas+tire+maintanence
+    yearly_cost=monthly_cost*12
+    print(f"Your monthly cost is ${monthly_cost} while your yearly cost is ${yearly_cost}\n")
+main()
+
+# 5. Property Tax
+#This program calculates the property tax and the assessment value of a property which is 60% of the property's actual value. It returns the cost as $tax/acre.
+
+assessment_value=.6
+property_tax=.72/100
+
+def main():
+    acre=float(input("How many acres are on the property? "))
+    property_value=float(input("How much is the property worth? "))
+    calc(acre,property_value)
+
+def calc(acre,property_value):
+    property_assessment=property_value*assessment_value
+    tax_value=property_assessment*property_tax
+    tax_per_acre=tax_value/acre
+    print(f"\nThe total tax for the property assessed is ${tax_value:.2f} while the tax per acre assessed at total value is ${tax_per_acre:.2f}\n")
+main()
+
+# 6. Stadium Seating
+# This program asks how many tickets for each class of seats were sold, then displays the amount of income generated from ticket sales
+
+class_a=20
+class_b=15
+class_c=10
+
+def main():
+    a=int(input("How many Class A were sold? "))
+    b=int(input("How many Class B were sold? "))
+    c=int(input("How many Class B were sold? "))
+    class_calc(a,b,c)
+
+def class_calc(a,b,c):
+    total_a=a*class_a
+    total_b=b*class_b
+    total_c=c*class_c
+    income_generated=total_a+total_b+total_c
+    print(f"The total amount of income generated from ticket sales is ${income_generated}")
+main()
+
+# 7. Paint Job Estimator
+# This program asks the user to enter the square feet of wall space to be painted and the price per gallon.
+# The company determined that for every 112 sqrft, one gallon of paint and 8 hours of labor will be rerquired.
+# The program should display the following data:
+# The numbers of gallons of paint required
+# The hours of labor required
+# The cost of the paint
+# The labor charges
+# The total cost of the paint job
+
+import math
+
+labor=35
+determination=112
+
+def main():
+    sqft=float(input("How many square feet of wall space will need to be painted? "))
+    price_per_gallons=float(input("How much is it for a gallon of paint? "))
+    determ=float(sqft/determination)
+    paint_calc(sqft,price_per_gallons,determ)
+
+def paint_calc(sqft,price_per_gallons,determ):
+    number_of_gallons=math.ceil(determ*price_per_gallons)
+    hours_of_labor=math.ceil(determ*8)
+    total_cost_of_paint=price_per_gallons*number_of_gallons
+    labor_charge=labor*hours_of_labor
+    total_cost_of_job=labor_charge+total_cost_of_paint
+    print(f"The total cost of the job will be ${total_cost_of_job}")
+    print(f"The total cost of the number of gallons will be {number_of_gallons}")
+    print(f"The total cost of the hours of labor will be {hours_of_labor}")
+    print(f"The total cost of the cost of paint will be ${total_cost_of_paint}")
+    print(f"The total cost of the labour charge will be ${labor_charge}")
+main()
+
+# 8. Monthly Sales Tax
+# A retail company must file a monthly sales tax report listing the total sales for the month, and the amount of state and county sales tax collected.
+# This program asks the user to enter the total sales for the month.
+# The state sales tax rate is 5% and the county is 2.5%
+
+state_tax_rate=0.05
+county_tax_rate=0.025
+
+def main ():
+    total_sales=float(input("Please enter the total sales for the month. "))
+    tax(total_sales)
+    
+def tax(TS):
+    county_tax=TS*county_tax_rate
+    state_tax=TS*state_tax_rate
+    total_sales_tax=county_tax+state_tax
+    print(f"\nThe state tax collected is ${state_tax}\n")
+    print(f"The county tax collected is ${county_tax}\n")
+    print(f"The total tax collected is ${total_sales_tax}\n")
+main()
+
+# 9. Feet to Inches
+# This program converts feets to inches
+# There are 12 inches in a 1 feet
+
+def main():
+    total_feet=int(input("How many feet are we calculating? "))
+    feet_to_inches(total_feet)
+
+def feet_to_inches(tf):
+    inches=tf*12
+    print(f"There are a total of {inches} inches in {tf} feet.")
+main()
+
+# 10. Math Quiz
+# The program gives users a simple math quiz
+# It displays two random numbers for the user to add together
+# There is an extra feature added to increase the difficulty to the level the user desires
+
+import random
+def main():
+    difficulty=int(input("\nFrom a scale of 1 to 100, how difficult would you like this game? "))
+    difficulty_level=difficulty*10
+    random_number_01=random.randint(1,difficulty_level)
+    random_number_02=random.randint(1,difficulty_level)
+    sum_of_random=random_number_01+random_number_02
+    tester(random_number_01,random_number_02,sum_of_random)
+
+def tester(random_number_01,random_number_02,sum_of_random):
+    print(f"\nWhat is the sum of: ")
+    print(f"\t\t {random_number_01}")
+    print(f"\t\t+{random_number_02}")
+    print(f"\t\t--------------")
+    User_answer=float(input("\t\t"))
+    if User_answer == sum_of_random:
+        print("Winner! Winner! Chicken Dinner!\n")
+        asker=input("Would you like to play again? (y/n) ")   
+        if asker=="y" or asker=="Y" or asker=="yes" or asker=="YES":
+            main()
+        
+    elif User_answer>sum_of_random:
+        print("\nEEERRR! Too high!! Try Again\n")
+        tester(random_number_01,random_number_02,sum_of_random)
+    else:
+        print("\nEEERRR! Too low!! Try Again\n")
+        tester(random_number_01,random_number_02,sum_of_random)
+main()
