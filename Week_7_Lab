@@ -1,0 +1,92 @@
+# 1. Total Sales
+# Design a program that asks the user to enter a store's sales
+# for each day of the week.
+# The amounts should be stored in a list. Use a loop to calculate the total sales
+# for the total sales for the week and display the results
+
+li = []
+count=0
+total_sum=0
+while count<=6:
+    total=int(input(f"Total sales for the day {count+1}: "))
+    li.append(total)
+    li[count]
+    count+=1
+
+total_sum=sum(li)
+print(float(total_sum))
+
+# 2. Lottery Number Generator
+# Design a program that generates a seven-digit lottery number. The program should generate seven random numbers, each in the range of 0 through 9,
+# and assign each a number to a list element. (Random numbers were discussed in Chapter 5.) Then write another loop that displays the contents of the list
+
+import random
+
+lottery_num=[]
+
+for index in range(7):
+    lottery_num.append(random.randint(0,9))
+
+print(f"The lottery numbers: {lottery_num}")
+
+# 3. Rainfall Statistics
+# Design a program that lets the user enter the total rainfall for each of 12 months into a list.
+# The program should calculate and display the total rainfall for the year, the average monthly rainfall, the months with the highest and lowest amounts.
+
+Rain=[]
+months=['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+for month in months:
+    ask=float(input(f"What is the average rainfall for {month}? "))
+    Rain.append(ask)
+
+total_rain=sum(Rain)
+average_rain=total_rain/12
+max_rain=max(Rain)
+min_rain=min(Rain)
+max_month=months[Rain.index(max_rain)]
+min_month=months[Rain.index(min_rain)]
+
+print(f"\nTotal rainfall for the year: {total_rain:.2f} inches")
+print(f"Average monthly rainfall: {average_rain:.2f} inches")
+print(f"Month with the highest rainfall: {max_month} ({max_rain:.2f} inches)")
+print(f"Month with the lowest rainfall: {min_month} ({min_rain:.2f} inches)")
+
+# 4. Number Analysis Program
+# Design a program that asks the user to enter a series of 20 numbers. The program should store the numbers in a list
+# then display the following data:
+# The lowest number in the list
+# The highest number in the list
+# The total of the number in the list
+# The average of the numbers in the list
+
+numbers=[]
+
+for index in range (1,21):
+    ask_num=float(input(f"Enter the number {index}: "))
+    numbers.append(ask_num)
+
+Lowest=min(numbers)
+Highest=max(numbers)
+Total=sum(numbers)
+Average=Total/20
+
+print(f"\nThe lowest number in the list is {Lowest}.")
+print(f"The highest number in the list is {Highest}.")
+print(f"The total of the number in the list is {Total}.")
+print(f"The average of the numbers in the list is {Average}.\n")
+
+# 6. Larger than N
+# In a program, write a function that accepts two arguments: a list, and a number N.
+# Assume that the list contains numbers. The function should display all of the numbers in the list that are greater than the number N
+
+def larger_than_N(numbers, N):
+    print(f"numbers that are greater than {N}: ")
+    for number in numbers:
+        if number>N:
+            print(number)
+
+number_list=[32,2,2,543,6,4,3,45,3,234,3,2,536,54,43,5]
+N=int(input(f"Enter a value for N: "))
+
+larger_than_N(number_list, N)
