@@ -90,3 +90,23 @@ number_list=[32,2,2,543,6,4,3,45,3,234,3,2,536,54,43,5]
 N=int(input(f"Enter a value for N: "))
 
 larger_than_N(number_list, N)
+
+# #7. Driver License Exam
+
+Test_Answers=["A","C","A","A","D","B","C","A","C","B","A","D","C","A","D","C","B","B","D","A"]
+# Student_Test=[ABAADBCACBADCADCBBDC]
+student_test=[]
+Correct_Answers=[]
+
+with open("Student_Test_Results.txt", 'r') as stud_test:
+    for char in stud_test:
+        student_test.extend(char)
+
+for index in range(min(len(student_test), len(Test_Answers))):
+    if Test_Answers[index]==student_test[index]:
+        Correct_Answers.append(index)
+
+correct_count=len(Correct_Answers)
+score=correct_count*100/(len(Test_Answers))
+
+print(f"The number of correct answers is {correct_count} with a score of {score}%")
