@@ -1,0 +1,99 @@
+## Lab 9: Programming Exercise
+
+# 1. Course Information
+# Write a program that creates a dictionary containing course numbers and the room numbers of the rooms where the courses meet.
+# The program should also create a dictionary containing course numbers and the names of the instructors that teach the course.
+# The program should also create a dictionary containing course numbers and the meeting times of each course.
+# The program should let the user enter a course number, then it should display the course's room number, instructor, and meeting time.
+
+Room_Number={'CS101':'3004','CS102':'4501','CS103':'6755','NT110':'1244','CM241':'1411'}
+Instructor={'CS101':'Haynes','CS102':'Alvarado','CS103':'Rich','NT110':'Burke','CM241':'Lee'}
+Meeting_Time={'CS101':'8:00 a.m.','CS102':'9:00 a.m.','CS103':'10:00 a.m.','NT110':'11:00 a.m.','CM241':'1:00 p.m.'}
+
+Input_Course_Number=input("\nPlease enter the course you would like looked up:\n\n")
+Cap_Input=Input_Course_Number.upper()
+
+if Cap_Input not in Room_Number:
+    print("Class not found. Please double check course number.")
+else:
+    Lookup_Room=Room_Number[Cap_Input]
+    Lookup_Instructor=Instructor[Cap_Input]
+    Lookup_Time=Meeting_Time[Cap_Input]
+    print(f"For course number {Cap_Input}, it is taking place in room {Lookup_Room} at {Lookup_Time} with Professor {Lookup_Instructor}.\n")
+
+# 2. Capital Quiz
+# Write a program that creates a dictionary containing the U.S. States as keys, and their capitals as values.
+# The program should then randomly quiz the user by displaying the name of a state and asking the user to enter the state's capital.
+# The program should keep a count of the number of correct and incorrect responses
+
+import random
+
+States_and_capitals={
+    'Alabama': 'Montgomery',
+    'Alaska': 'Juneau',
+    'Arizona':'Phoenix',
+    'Arkansas':'Little Rock',
+    'California': 'Sacramento',
+    'Colorado':'Denver',
+    'Connecticut':'Hartford',
+    'Delaware':'Dover',
+    'Florida': 'Tallahassee',
+    'Georgia': 'Atlanta',
+    'Hawaii': 'Honolulu',
+    'Idaho': 'Boise',
+    'Illinios': 'Springfield',
+    'Indiana': 'Indianapolis',
+    'Iowa': 'Des Monies',
+    'Kansas': 'Topeka',
+    'Kentucky': 'Frankfort',
+    'Louisiana': 'Baton Rouge',
+    'Maine': 'Augusta',
+    'Maryland': 'Annapolis',
+    'Massachusetts': 'Boston',
+    'Michigan': 'Lansing',
+    'Minnesota': 'St. Paul',
+    'Mississippi': 'Jackson',
+    'Missouri': 'Jefferson City',
+    'Montana': 'Helena',
+    'Nebraska': 'Lincoln',
+    'Neveda': 'Carson City',
+    'New Hampshire': 'Concord',
+    'New Jersey': 'Trenton',
+    'New Mexico': 'Santa Fe',
+    'New York': 'Albany',
+    'North Carolina': 'Raleigh',
+    'North Dakota': 'Bismarck',
+    'Ohio': 'Columbus',
+    'Oklahoma': 'Oklahoma City',
+    'Oregon': 'Salem',
+    'Pennsylvania': 'Harrisburg',
+    'Rhoda Island': 'Providence',
+    'South Carolina': 'Columbia',
+    'South Dakoda': 'Pierre',
+    'Tennessee': 'Nashville',
+    'Texas': 'Austin',
+    'Utah': 'Salt Lake City',
+    'Vermont': 'Montpelier',
+    'Virginia': 'Richmond',
+    'Washington': 'Olympia',
+    'West Virginia': 'Charleston',
+    'Wisconsin': 'Madison',
+    'Wyoming': 'Cheyenne'  
+}
+# I found a list on the internet.
+
+points=0
+Tries=int(input("\nHow many states would you like to be quized on?\n"))
+for i in range(Tries):
+    States=list(States_and_capitals.keys()) #Creates a list of all the states
+    State=random.choice(States) #Randomly selects a state
+    capital=States_and_capitals[State].capitalize() #Searches for capital of state
+    Answer=input(f"\nWhat is the capital of {State}?\n\n") # Asks the user for the capital
+    Answer_cap=Answer.capitalize() # Capatilizes the first letter or program gets confused when searching
+    if Answer_cap == capital: # If loop to check if the answer is correct
+        print("Good job! One point for you!")
+        points+=1
+    else:
+        print(f"WRONG! HAHA!\nIt is {capital} but you put {Answer}.")
+
+print(f"\nYou got a total of {points} out of {Tries} points!\n") # Final result.
