@@ -1,0 +1,174 @@
+# ## Lab 11: Programming Exercise
+
+#  1. Employee and ProductionWorker Classes
+#  Write an Employee class that keeps data attributes for the following pieces of
+#  information:
+#  Employee name
+#  Employee number
+#  Next, write a class named ProductionWorker that is a subclass of
+#  the Employee class. The ProductionWorker class should keep data attributes for
+#  the following information:
+#  Shift number (an integer, such as 1, 2, or 3)
+#  Hourly pay rate
+#  The workday is divided into two shifts: day and night. The shift attribute will hold an
+#  integer value representing the shift that the employee works. The day shift is shift 1 and
+#  the night shift is shift 2. Write the appropriate accessor and mutator methods for each
+#  class.
+#  Once you have written the classes, write a program that creates an object of
+#  the ProductionWorker class and prompts the user to enter data for each of the
+#  object’s data attributes. Store the data in the object, then use the object’s accessor
+#  methods to retrieve it and display it on the screen.
+
+class Employee:
+    def __init__(self, name, employee_number):
+        self._name = name
+        self._employee_number = employee_number
+    def set_name(self, name):
+        self._name = name
+    def set_employee_number(self, employee_number):
+        self._employee_number = employee_number
+    def get_name(self):
+        return self._name
+    def get_employee_number(self):
+        return self._employee_number
+
+
+class ProductionWorker(Employee):
+    def __init__(self, name, employee_number, shift_number, hourly_pay_rate):
+        super().__init__(name, employee_number)
+        self._shift_number = shift_number
+        self._hourly_pay_rate = hourly_pay_rate
+    def set_shift_number(self, shift_number):
+        self._shift_number = shift_number
+    def set_hourly_pay_rate(self, hourly_pay_rate):
+        self._hourly_pay_rate = hourly_pay_rate
+    def get_shift_number(self):
+        return self._shift_number
+    def get_hourly_pay_rate(self):
+        return self._hourly_pay_rate
+
+def main():
+    name = input("Enter the employee's name: ")
+    employee_number = input("Enter the employee's number: ")
+    shift_number = int(input("Enter the shift number (1 for day, 2 for night): "))
+    hourly_pay_rate = float(input("Enter the hourly pay rate: "))
+    worker = ProductionWorker(name, employee_number, shift_number, hourly_pay_rate)
+    print("\nProduction Worker Details:")
+    print("Employee Name:", worker.get_name())
+    print("Employee Number:", worker.get_employee_number())
+    print("Shift Number:", worker.get_shift_number())
+    print("Hourly Pay Rate:", worker.get_hourly_pay_rate())
+
+if __name__=="__main__":
+    main()
+
+### 2. ShiftSupervisor Class
+# In a particular factory, a shift supervisor is a salaried employee who supervises a shift.
+# In addition to a salary, the shift supervisor earns a yearly bonus when his or her shift
+# meets production goals. Write a ShiftSupervisor class that is a subclass of
+# the Employee class you created in Programming Exercise 1.
+# The ShiftSupervisor class should keep a data attribute for the annual salary, and a
+# data attribute for the annual production bonus that a shift supervisor has earned.
+# Demonstrate the class by writing a program that uses a ShiftSupervisor object.
+
+class Employee:
+    def __init__(self, name, employee_number):
+        self.__name = name
+        self.__employee_number = employee_number
+    def set_name(self, name):
+        self.__name = name
+    def set_employee_number(self, employee_number):
+        self.__employee_number = employee_number
+    def get_name(self):
+        return self.__name
+    def get_employee_number(self):
+        return self.__employee_number
+
+class ShiftSupervisor(Employee):
+    def __init__(self, name, employee_number, annual_salary, annual_bonus):
+        super().__init__(name, employee_number)
+        self.__annual_salary = annual_salary
+        self.__annual_bonus = annual_bonus
+    def set_annual_salary(self, annual_salary):
+        self.__annual_salary = annual_salary
+    def set_annual_bonus(self, annual_bonus):
+        self.__annual_bonus = annual_bonus
+    def get_annual_salary(self):
+        return self.__annual_salary
+    def get_annual_bonus(self):
+        return self.__annual_bonus
+
+
+def main():
+    name = input("Enter the supervisor's name: ")
+    employee_number = input("Enter the supervisor's employee number: ")
+    annual_salary = float(input("Enter the annual salary: "))
+    annual_bonus = float(input("Enter the annual production bonus: "))
+    supervisor = ShiftSupervisor(name, employee_number, annual_salary, annual_bonus)
+    print("\nShift Supervisor Details:")
+    print("Name:", supervisor.get_name())
+    print("Employee Number:", supervisor.get_employee_number())
+    print("Annual Salary: $", format(supervisor.get_annual_salary(), ".2f"))
+    print("Annual Production Bonus: $", format(supervisor.get_annual_bonus(), ".2f"))
+
+
+if __name__ == "__main__":
+    main()
+
+# 3. Person and Customer Classes
+# Write a class named Person with data attributes for a person’s name, address, and
+# telephone number. Next, write a class named Customer that is a subclass of
+# the Person class. The Customer class should have a data attribute for a customer
+# number, and a Boolean data attribute indicating whether the customer wishes to be on a
+# mailing list. Demonstrate an instance of the Customer class in a simple program.
+
+class Person:
+    def __init__(self, name, address, phone_number):
+        self.__name = name
+        self.__address = address
+        self.__phone_number = phone_number
+    def set_name(self, name):
+        self.__name = name
+    def set_address(self, address):
+        self.__address = address
+    def set_phone_number(self, phone_number):
+        self.__phone_number = phone_number
+    def get_name(self):
+        return self.__name
+    def get_address(self):
+        return self.__address
+    def get_phone_number(self):
+        return self.__phone_number
+
+
+class Customer(Person):
+    def __init__(self, name, address, phone_number, customer_number, mailing_list):
+        super().__init__(name, address, phone_number)
+        self.__customer_number = customer_number
+        self.__mailing_list = mailing_list
+    def set_customer_number(self, customer_number):
+        self.__customer_number = customer_number
+    def set_mailing_list(self, mailing_list):
+        self.__mailing_list = mailing_list
+    def get_customer_number(self):
+        return self.__customer_number
+    def get_mailing_list(self):
+        return self.__mailing_list
+
+def main():
+    name = input("Enter the customer's name: ")
+    address = input("Enter the customer's address: ")
+    phone_number = input("Enter the customer's phone number: ")
+    customer_number = input("Enter the customer number: ")
+    mailing_list_input = input("Does the customer want to be on the mailing list? (yes/no): ")
+    mailing_list = True if mailing_list_input.lower() == "yes" else False
+    customer = Customer(name, address, phone_number, customer_number, mailing_list)
+    print("\nCustomer Details:")
+    print("Name:", customer.get_name())
+    print("Address:", customer.get_address())
+    print("Phone Number:", customer.get_phone_number())
+    print("Customer Number:", customer.get_customer_number())
+    print("On Mailing List:", "Yes" if customer.get_mailing_list() else "No")
+
+if __name__ == "__main__":
+    main()
