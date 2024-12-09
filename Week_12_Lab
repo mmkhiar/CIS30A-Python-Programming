@@ -1,0 +1,118 @@
+## Lab 12 Programming Exercise
+
+# 1: Recursive Printing
+#Design a recursive function that accepts an integer argument, n, and prints the numbers 1 up through n.
+
+def recursive_print(n, current=1):
+    if current > n:  
+        return
+    print(current)
+    recursive_print(n, current + 1) 
+
+n=int(input("Please enter an intger: "))
+recursive_print(n)
+
+## 2. Recursive Multiplication
+# Design a recursive function that accepts two arguments into the parameters x and y. 
+# The function should return the value of x times y. 
+# Remember, multiplication can be performed as a repeated addition as follows
+# 7x4=4+4+4+4+4+4+4
+# (To keep the function simple, assume x and y will always hold positive non-zero integers.)
+
+def main():
+    y=int(input("Please enter a number: "))
+    x=int(input("Please enter another number: "))
+    result = recursive_multiplication(y, x)
+    print(f"The product of {y} and {x} is: {result}")
+
+def recursive_multiplication(x, y):
+    if y == 1:  
+        return x
+    return x + recursive_multiplication(x, y - 1)  
+
+main()
+
+## 3. Recursive Lines
+## Write a recursive function that accepts an integer argument, n. 
+## The function should display n lines of asterisks on the screen, 
+## with the first line showing 1 asterisk, the second line 
+## showing 2 asterisks, up to the nth line which shows n asterisks.
+
+def recursive_lines(n, current=1):
+    if current > n:  
+        return
+    print('*' * current)  
+    recursive_lines(n, current + 1)  
+
+try:
+    user_input = int(input("Enter the number of lines (positive integer): "))
+    if user_input > 0:
+        recursive_lines(user_input)
+    else:
+        print("Please enter a positive integer.")
+except ValueError:
+    print("Invalid input! Please enter an integer.")
+
+## 4. Largest List Item
+## Design a function that accepts a list as an argument and returns 
+## the largest value in the list. the function should use recursion 
+## to find the largest item
+
+def largest_list_item(lst):
+    if len(lst) == 1:
+        return lst[0]
+    else:
+        max_of_rest = largest_list_item(lst[1:])
+        return lst[0] if lst[0] > max_of_rest else max_of_rest
+
+try:
+    user_input = input("Enter a list of numbers separated by spaces: ")
+    numbers = [float(num) for num in user_input.split()]
+    if numbers:
+        largest = largest_list_item(numbers)
+        print(f"The largest number in the list is: {largest}")
+    else:
+        print("The list is empty. Please enter at least one number.")
+except ValueError:
+    print("Invalid input. Please enter numbers separated by spaces.")
+
+## 5. Recursive list sum
+## Design a function that accepts a list of numbers as an argument. 
+## The function should recursively calculate the sum of all the 
+## numbers in the list and return that value.
+
+def recursive_list_sum(lst):
+    if not lst:  
+        return 0
+    else:
+        return lst[0] + recursive_list_sum(lst[1:])
+
+try:
+    user_input = input("Enter a list of numbers separated by spaces: ")
+    numbers = [float(num) for num in user_input.split()]
+    total = recursive_list_sum(numbers)
+    print(f"The sum of the numbers in the list is: {total}")
+except ValueError:
+    print("Invalid input! Please enter numbers separated by spaces.")
+
+## 6. Sum of numbers
+## Design a function that accepts an integer argument and returns the sum 
+## of all the integers from 1 up to the number passed as an argument. 
+## For example. if 50 is passed as an argument, the function will return the sum 1,2,3,4,....50. 
+## Use recursion to calculate the sum.
+
+def sum_of_numbers(n):
+    if n == 1: 
+        return 1
+    else:
+        return n + sum_of_numbers(n - 1)
+
+try:
+    user_input = int(input("Enter a positive integer: "))
+    if user_input > 0:
+        total = sum_of_numbers(user_input)
+        print(f"The sum of numbers from 1 to {user_input} is: {total}")
+    else:
+        print("Please enter a positive integer.")
+except ValueError:
+    print("Invalid input! Please enter a positive integer.")
